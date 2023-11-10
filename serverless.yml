@@ -1,0 +1,15 @@
+service: exchangerates
+
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: python3.11
+  stage: prod
+  region: ${env:AWS_DEFAULT_REGION}
+
+functions:
+  crawler:
+    image: ${env:AWS_ECR_IMAGE_URL}
+    memorySize: 128
+    timeout: 60
